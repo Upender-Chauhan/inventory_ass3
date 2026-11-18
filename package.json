@@ -1,0 +1,17 @@
+{
+  "name": "inventory-system",
+  "version": "1.0.0",
+  "description": "Inventory and Data Management System - REST API (Node.js, Express, MongoDB, Mongoose, dotenv)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "seed": "node src/seed.js"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^18.0.10",
+    "express": "^5.3.0",
+    "mongoose": "^9.12.2"
+  }
+}

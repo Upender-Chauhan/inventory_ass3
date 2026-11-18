@@ -1,0 +1,44 @@
+### Works with the VS Code "REST Client" extension. Server: npm start
+@base = http://localhost:5000/api
+
+### Create product
+POST {{base}}/products
+Content-Type: application/json
+
+{ "name": "Laptop Stand", "sku": "ELEC-010", "category": "electronics", "price": 1299, "quantity": 25, "reorderLevel": 10, "supplier": "DeskCo" }
+
+### List: filter + sort + paginate
+GET {{base}}/products?category=electronics&minPrice=200&maxPrice=5000&inStock=true&sort=-price,name&page=1&limit=5
+
+### Search + field projection
+GET {{base}}/products?search=pen&fields=name,sku,price
+
+### Get one (replace ID)
+GET {{base}}/products/PUT_ID_HERE
+
+### Update details
+PUT {{base}}/products/PUT_ID_HERE
+Content-Type: application/json
+
+{ "price": 1499, "supplier": "NewSupplier" }
+
+### Restock
+PATCH {{base}}/products/PUT_ID_HERE/restock
+Content-Type: application/json
+
+{ "quantity": 20 }
+
+### Sale
+PATCH {{base}}/products/PUT_ID_HERE/sell
+Content-Type: application/json
+
+{ "quantity": 3 }
+
+### Delete
+DELETE {{base}}/products/PUT_ID_HERE
+
+### Low-stock report (per-product reorderLevel, or ?threshold=25)
+GET {{base}}/reports/low-stock
+
+### Category-wise summary (aggregation)
+GET {{base}}/reports/category-summary
